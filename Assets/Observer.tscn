@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://dpl8uapivvpnk"]
+
+[node name="Observer" type="Node2D"]

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdfwa8uk16tte"]
+
+[ext_resource type="Texture2D" uid="uid://bt0wg3jh0nuwi" path="res://Art/size scale.png" id="1_caqpx"]
+
+[node name="test level" type="Node2D"]
+
+[node name="SizeScale" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+texture = ExtResource("1_caqpx")

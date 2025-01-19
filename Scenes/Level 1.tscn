@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://nw2kowxiwgld"]
+
+[ext_resource type="Texture2D" uid="uid://brgeoroctr46p" path="res://Art/Background.png" id="1_qc3q7"]
+[ext_resource type="PackedScene" uid="uid://c8jxhu18nruo2" path="res://Assets/Player.tscn" id="3_qu3eo"]
+[ext_resource type="PackedScene" uid="uid://hrs2xolqc8q7" path="res://Assets/Shoot button.tscn" id="4_fyrxw"]
+[ext_resource type="PackedScene" uid="uid://bfhffvsj8cssc" path="res://Assets/Bullet.tscn" id="4_wxjds"]
+
+[node name="Level1" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+texture = ExtResource("1_qc3q7")
+
+[node name="ShootButton" parent="." instance=ExtResource("4_fyrxw")]
+position = Vector2(67, 446)
+
+[node name="Player" parent="." instance=ExtResource("3_qu3eo")]
+position = Vector2(101, 544)
+
+[node name="Bullet" parent="." instance=ExtResource("4_wxjds")]
+position = Vector2(162, 535)
