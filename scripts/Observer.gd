@@ -1,7 +1,8 @@
 extends Node
 
 var shootingPhase = false
-var rest_nodes
+var inventory_space
+var weapon_slots
 
 
 #set the phase to shooting phase
@@ -10,4 +11,5 @@ func setPhaseToShoot():
 		shootingPhase = true
 
 func _ready():
-	rest_nodes = get_tree().get_nodes_in_group("zone")
+	inventory_space = get_tree().get_nodes_in_group("zone")
+	weapon_slots = get_tree().get_nodes_in_group("Weapon_slot")
