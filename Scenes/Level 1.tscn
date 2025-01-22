@@ -56,13 +56,13 @@ position = Vector2(727, 280)
 position = Vector2(122, 50)
 
 [node name="Revolver2" parent="weapons" instance=ExtResource("6_2jxly")]
-position = Vector2(271, 53)
+position = Vector2(270, 55)
 
 [node name="Revolver3" parent="weapons" instance=ExtResource("6_2jxly")]
-position = Vector2(423, 50)
+position = Vector2(421, 51)
 
 [node name="Revolver4" parent="weapons" instance=ExtResource("6_2jxly")]
-position = Vector2(572, 51)
+position = Vector2(569, 56)
 
 [node name="Bullet" parent="." instance=ExtResource("4_wxjds")]
 position = Vector2(63, 520)
