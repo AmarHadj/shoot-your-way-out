@@ -1,15 +1,29 @@
-[gd_scene load_steps=10 format=3 uid="uid://nw2kowxiwgld"]
+[gd_scene load_steps=17 format=4 uid="uid://nw2kowxiwgld"]
 
 [ext_resource type="Texture2D" uid="uid://brgeoroctr46p" path="res://Art/Background.png" id="1_qc3q7"]
 [ext_resource type="PackedScene" uid="uid://c8jxhu18nruo2" path="res://Assets/Player.tscn" id="3_qu3eo"]
+[ext_resource type="Texture2D" uid="uid://cnt4pn5ns42x6" path="res://Art/wall.png" id="3_uk1ns"]
+[ext_resource type="Texture2D" uid="uid://bl7n425q3f6g1" path="res://Art/ground.png" id="4_0orb4"]
 [ext_resource type="PackedScene" uid="uid://bfhffvsj8cssc" path="res://Assets/Bullet.tscn" id="4_wxjds"]
 [ext_resource type="Texture2D" uid="uid://chluqvc5li0tq" path="res://Art/weapon slot.png" id="5_0jgen"]
 [ext_resource type="PackedScene" uid="uid://cglgw3xivu2t4" path="res://Assets/Revolver.tscn" id="6_2jxly"]
 [ext_resource type="PackedScene" uid="uid://b0scdla5fej5g" path="res://Assets/Inventory.tscn" id="7_gvsgm"]
 [ext_resource type="PackedScene" uid="uid://4sfog0m880yt" path="res://Assets/weapon_slot.tscn" id="7_rtos5"]
+[ext_resource type="PackedScene" uid="uid://clqxixgo3f2rn" path="res://Assets/Target.tscn" id="10_kovh6"]
+[ext_resource type="PackedScene" uid="uid://b3y2hfrm0wbo3" path="res://Assets/Wall.tscn" id="11_w4l5m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s0qen"]
 texture = ExtResource("5_0jgen")
+texture_region_size = Vector2i(48, 48)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w8fui"]
+texture = ExtResource("3_uk1ns")
+texture_region_size = Vector2i(48, 48)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_onfcm"]
+texture = ExtResource("4_0orb4")
 texture_region_size = Vector2i(48, 48)
 0:0/0 = 0
 
@@ -19,6 +33,11 @@ terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_s0qen")
+sources/1 = SubResource("TileSetAtlasSource_w8fui")
+sources/2 = SubResource("TileSetAtlasSource_onfcm")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_henyy"]
+size = Vector2(192, 288)
 
 [node name="Level1" type="Node2D"]
 
@@ -27,11 +46,25 @@ position = Vector2(576, 324)
 texture = ExtResource("1_qc3q7")
 
 [node name="Walls" type="TileMapLayer" parent="."]
+position = Vector2(528, 360)
+tile_map_data = PackedByteArray("AAD//wUAAQAAAAAAAAD//wQAAQAAAAAAAAD//wMAAQAAAAAAAAD//wIAAQAAAAAAAAD//wEAAQAAAAAAAAD//wAAAQAAAAAAAAAAAAAAAQAAAAAAAAABAAAAAQAAAAAAAAACAAAAAQAAAAAAAAACAAEAAQAAAAAAAAACAAIAAQAAAAAAAAACAAMAAQAAAAAAAAACAAQAAQAAAAAAAAACAAUAAQAAAAAAAAABAAUAAQAAAAAAAAABAAQAAQAAAAAAAAABAAMAAQAAAAAAAAABAAIAAQAAAAAAAAABAAEAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAAQAAQAAAAAAAAAAAAUAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_11qq3")
+
+[node name="Area2D" type="Area2D" parent="Walls"]
+position = Vector2(45, 119)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Area2D"]
+position = Vector2(3, 25)
+shape = SubResource("RectangleShape2D_henyy")
+
+[node name="ground" type="TileMapLayer" parent="."]
+position = Vector2(528, 360)
+tile_map_data = PackedByteArray("AAD//wUAAQAAAAAAAAD//wQAAQAAAAAAAAD//wMAAQAAAAAAAAD//wIAAQAAAAAAAAD//wEAAQAAAAAAAAD//wAAAQAAAAAAAAAAAAAAAQAAAAAAAAABAAAAAQAAAAAAAAACAAAAAQAAAAAAAAACAAEAAQAAAAAAAAACAAIAAQAAAAAAAAACAAMAAQAAAAAAAAACAAQAAQAAAAAAAAACAAUAAQAAAAAAAAABAAUAAQAAAAAAAAABAAQAAQAAAAAAAAABAAMAAQAAAAAAAAABAAIAAQAAAAAAAAABAAEAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAAQAAQAAAAAAAAAAAAUAAQAAAAAAAAD+/wUAAgAAAAAAAAD9/wUAAgAAAAAAAAD8/wUAAgAAAAAAAAD7/wUAAgAAAAAAAAD6/wUAAgAAAAAAAAD5/wUAAgAAAAAAAAD4/wUAAgAAAAAAAAD3/wUAAgAAAAAAAAD2/wUAAgAAAAAAAAD1/wUAAgAAAAAAAAD1/wQAAgAAAAAAAAD2/wQAAgAAAAAAAAD3/wQAAgAAAAAAAAADAAUAAgAAAAAAAAAEAAUAAgAAAAAAAAAFAAUAAgAAAAAAAAAGAAUAAgAAAAAAAAAHAAUAAgAAAAAAAAAIAAUAAgAAAAAAAAAJAAUAAgAAAAAAAAAKAAUAAgAAAAAAAAALAAUAAgAAAAAAAAAMAAUAAgAAAAAAAAA=")
 tile_set = SubResource("TileSet_11qq3")
 
 [node name="weapon slot" type="TileMapLayer" parent="."]
-position = Vector2(511, 352)
-tile_map_data = PackedByteArray(0, 0, 253, 255, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 253, 255, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 246, 255, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+position = Vector2(528, 360)
+tile_map_data = PackedByteArray("AAD9/wMAAAAAAAAAAAD9//7/AAAAAAAAAAAEAP7/AAAAAAAAAAAEAAMAAAAAAAAAAAD2/wMAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_11qq3")
 
 [node name="Inventory" parent="." instance=ExtResource("7_gvsgm")]
@@ -39,16 +72,16 @@ tile_set = SubResource("TileSet_11qq3")
 [node name="Waepon_slots" type="Node" parent="."]
 
 [node name="DropZone" parent="Waepon_slots" instance=ExtResource("7_rtos5")]
-position = Vector2(390, 520)
+position = Vector2(408, 528)
 
 [node name="DropZone2" parent="Waepon_slots" instance=ExtResource("7_rtos5")]
-position = Vector2(390, 280)
+position = Vector2(408, 287)
 
 [node name="DropZone3" parent="Waepon_slots" instance=ExtResource("7_rtos5")]
-position = Vector2(727, 520)
+position = Vector2(744, 528)
 
 [node name="DropZone4" parent="Waepon_slots" instance=ExtResource("7_rtos5")]
-position = Vector2(727, 280)
+position = Vector2(744, 287)
 
 [node name="weapons" type="Node" parent="."]
 
@@ -65,7 +98,15 @@ position = Vector2(421, 51)
 position = Vector2(569, 56)
 
 [node name="Bullet" parent="." instance=ExtResource("4_wxjds")]
-position = Vector2(63, 520)
+position = Vector2(87, 520)
 
 [node name="Player" parent="." instance=ExtResource("3_qu3eo")]
-position = Vector2(60, 528)
+position = Vector2(75, 528)
+
+[node name="Target" parent="." instance=ExtResource("10_kovh6")]
+position = Vector2(1080, 528)
+
+[node name="Wall" parent="." instance=ExtResource("11_w4l5m")]
+visible = false
+position = Vector2(576, 504)
+scale = Vector2(9.5, 14.3)

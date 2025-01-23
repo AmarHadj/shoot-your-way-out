@@ -3,6 +3,7 @@ extends Node
 var shootingPhase = false
 var inventory_space
 var weapon_slots
+var level_complete = false
 
 
 #set the phase to shooting phase
