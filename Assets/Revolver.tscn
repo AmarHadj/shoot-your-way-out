@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cglgw3xivu2t4"]
+[gd_scene load_steps=7 format=3 uid="uid://cglgw3xivu2t4"]
 
 [ext_resource type="Texture2D" uid="uid://bfrd487usat6v" path="res://Art/revolver.png" id="1_1di6j"]
 [ext_resource type="Script" path="res://scripts/revolver.gd" id="1_ftlq0"]
@@ -18,6 +18,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_cy3iy"]
+radius = 8.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_m8n7j"]
 radius = 9.87935
 
@@ -28,11 +31,16 @@ script = ExtResource("1_ftlq0")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_u2s54")
 
-[node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
+[node name="shoot_area" type="Area2D" parent="AnimatedSprite2D"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/shoot_area"]
+shape = SubResource("CircleShape2D_cy3iy")
+
+[node name="picked_area" type="Area2D" parent="AnimatedSprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/picked_area"]
 position = Vector2(2, -2)
 scale = Vector2(5.925, 5.925)
 shape = SubResource("CircleShape2D_m8n7j")
 
-[connection signal="input_event" from="AnimatedSprite2D/Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="input_event" from="AnimatedSprite2D/picked_area" to="." method="_on_area_2d_input_event"]
