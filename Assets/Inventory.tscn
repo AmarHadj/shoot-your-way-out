@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0scdla5fej5g"]
+[gd_scene load_steps=4 format=3 uid="uid://b0scdla5fej5g"]
 
 [ext_resource type="Script" path="res://scripts/Inventory.gd" id="1_i6ug5"]
 [ext_resource type="Texture2D" uid="uid://bwiaghq4ip2e8" path="res://Art/Inventory.png" id="1_smbuq"]
 [ext_resource type="PackedScene" uid="uid://tal68jtsg3wr" path="res://Assets/Inventory_slot.tscn" id="2_pfhes"]
-[ext_resource type="PackedScene" uid="uid://hrs2xolqc8q7" path="res://Assets/Shoot button.tscn" id="3_kfp24"]
 
 [node name="Inventory" type="Control"]
 layout_mode = 3
@@ -32,6 +31,3 @@ position = Vector2(572, 51)
 
 [node name="DropZone6" parent="." instance=ExtResource("2_pfhes")]
 position = Vector2(722, 51)
-
-[node name="ShootButton" parent="." instance=ExtResource("3_kfp24")]
-position = Vector2(1101, 47)

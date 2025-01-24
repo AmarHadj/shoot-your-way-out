@@ -1,19 +1,31 @@
 extends CharacterBody2D
+@onready var lose_ray_cast: RayCast2D = $Lose_ray_cast
+
 
 
 const SPEED = 300.0 # set to 2000.0 for the final result
 var x_movment = SPEED
 var y_movment = 0
+var spawn_point
+
+func _ready():
+	spawn_point = global_position
 
 func _physics_process(delta):
 	if Observer.shootingPhase:
 		velocity.x = x_movment
 		velocity.y = y_movment
 		move_and_slide()
+		
+		if lose_ray_cast.is_colliding():
+			Observer.shootingPhase = false
+			global_position = spawn_point
+			x_movment = SPEED
+			y_movment = 0
+			self.set_rotation_degrees(0)
 
 func _on_area_2d_area_entered(area: Area2D):
 	if area.name == "shoot_area" :
-		
 		# sets the position of the bullet on the gun barrel
 		for child in area.get_children():
 			if child.name == "barrel":
@@ -23,17 +35,21 @@ func _on_area_2d_area_entered(area: Area2D):
 		self.set_rotation_degrees(gun_rotation)
 
 		if gun_rotation == 0 :
-			x_movment = SPEED
-			y_movment = 0
+			set_movment(SPEED, 0)
 			
-		if gun_rotation == 270 :
-			y_movment = -SPEED
-			x_movment = 0
-		
 		if gun_rotation == 90 :
-			y_movment = SPEED
-			x_movment = 0
+			set_movment(0,SPEED)
 			
 		if gun_rotation == 180 :
-			x_movment = -SPEED
-			y_movment = 0
+			set_movment(-SPEED, 0)
+			
+		if gun_rotation == 270 :
+			set_movment(0, -SPEED)
+	
+	
+	if area.name == "win" :
+		pass
+		
+func set_movment(x,y):
+	y_movment = y
+	x_movment = x
