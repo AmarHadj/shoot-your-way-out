@@ -1,32 +1,32 @@
-[gd_scene load_steps=18 format=4 uid="uid://nw2kowxiwgld"]
+[gd_scene load_steps=18 format=4 uid="uid://cbqpqse6fxth"]
 
-[ext_resource type="Texture2D" uid="uid://brgeoroctr46p" path="res://Art/Background.png" id="1_d18rm"]
-[ext_resource type="Script" path="res://scripts/Level.gd" id="1_jcdyn"]
-[ext_resource type="Texture2D" uid="uid://chluqvc5li0tq" path="res://Art/weapon slot.png" id="2_da4e5"]
-[ext_resource type="Texture2D" uid="uid://cnt4pn5ns42x6" path="res://Art/wall.png" id="3_vtatv"]
-[ext_resource type="Texture2D" uid="uid://bl7n425q3f6g1" path="res://Art/ground.png" id="4_of8fy"]
-[ext_resource type="PackedScene" uid="uid://b0scdla5fej5g" path="res://Assets/Inventory.tscn" id="5_0q3dk"]
-[ext_resource type="PackedScene" uid="uid://4sfog0m880yt" path="res://Assets/weapon_slot.tscn" id="6_qhjyw"]
-[ext_resource type="PackedScene" uid="uid://cglgw3xivu2t4" path="res://Assets/Revolver.tscn" id="7_htcps"]
-[ext_resource type="PackedScene" uid="uid://clqxixgo3f2rn" path="res://Assets/Target.tscn" id="8_qmtj5"]
-[ext_resource type="PackedScene" uid="uid://hrs2xolqc8q7" path="res://Assets/Shoot button.tscn" id="9_gbk0s"]
-[ext_resource type="PackedScene" uid="uid://bfhffvsj8cssc" path="res://Assets/Bullet.tscn" id="10_tkli8"]
-[ext_resource type="PackedScene" uid="uid://c8jxhu18nruo2" path="res://Assets/Player.tscn" id="11_36y3b"]
-[ext_resource type="PackedScene" uid="uid://lf6m3xu2ssyb" path="res://Assets/Next_level_button.tscn" id="12_r0j10"]
+[ext_resource type="Texture2D" uid="uid://brgeoroctr46p" path="res://Art/Background.png" id="1_3tp23"]
+[ext_resource type="Script" path="res://scripts/Level.gd" id="1_lx422"]
+[ext_resource type="Texture2D" uid="uid://chluqvc5li0tq" path="res://Art/weapon slot.png" id="2_qlyrd"]
+[ext_resource type="Texture2D" uid="uid://cnt4pn5ns42x6" path="res://Art/wall.png" id="3_b8j4i"]
+[ext_resource type="Texture2D" uid="uid://bl7n425q3f6g1" path="res://Art/ground.png" id="4_010x1"]
+[ext_resource type="PackedScene" uid="uid://b0scdla5fej5g" path="res://Assets/Inventory.tscn" id="5_qvv84"]
+[ext_resource type="PackedScene" uid="uid://4sfog0m880yt" path="res://Assets/weapon_slot.tscn" id="6_apo16"]
+[ext_resource type="PackedScene" uid="uid://cglgw3xivu2t4" path="res://Assets/Revolver.tscn" id="7_cnoxj"]
+[ext_resource type="PackedScene" uid="uid://clqxixgo3f2rn" path="res://Assets/Target.tscn" id="8_7d64g"]
+[ext_resource type="PackedScene" uid="uid://hrs2xolqc8q7" path="res://Assets/Shoot button.tscn" id="9_wfujx"]
+[ext_resource type="PackedScene" uid="uid://bfhffvsj8cssc" path="res://Assets/Bullet.tscn" id="10_bbgin"]
+[ext_resource type="PackedScene" uid="uid://c8jxhu18nruo2" path="res://Assets/Player.tscn" id="11_evwll"]
+[ext_resource type="PackedScene" uid="uid://lf6m3xu2ssyb" path="res://Assets/Next_level_button.tscn" id="12_swaa4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s0qen"]
-texture = ExtResource("2_da4e5")
+texture = ExtResource("2_qlyrd")
 texture_region_size = Vector2i(48, 48)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w8fui"]
-texture = ExtResource("3_vtatv")
+texture = ExtResource("3_b8j4i")
 texture_region_size = Vector2i(48, 48)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -24, 24, -24, 24, 24, -24, 24)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_onfcm"]
-texture = ExtResource("4_of8fy")
+texture = ExtResource("4_010x1")
 texture_region_size = Vector2i(48, 48)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -24, 24, -24, 24, 24, -24, 24)
@@ -41,12 +41,12 @@ sources/0 = SubResource("TileSetAtlasSource_s0qen")
 sources/1 = SubResource("TileSetAtlasSource_w8fui")
 sources/2 = SubResource("TileSetAtlasSource_onfcm")
 
-[node name="level_1" type="Node2D"]
-script = ExtResource("1_jcdyn")
+[node name="level_2" type="Node2D"]
+script = ExtResource("1_lx422")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(576, 324)
-texture = ExtResource("1_d18rm")
+texture = ExtResource("1_3tp23")
 
 [node name="Walls" type="TileMapLayer" parent="."]
 position = Vector2(528, 360)
@@ -62,49 +62,49 @@ position = Vector2(528, 360)
 tile_map_data = PackedByteArray("AAD9/wMAAAAAAAAAAAD9//7/AAAAAAAAAAAEAP7/AAAAAAAAAAAEAAMAAAAAAAAAAAD2/wMAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_11qq3")
 
-[node name="Inventory" parent="." instance=ExtResource("5_0q3dk")]
+[node name="Inventory" parent="." instance=ExtResource("5_qvv84")]
 
 [node name="Waepon_slots" type="Node" parent="."]
 
-[node name="DropZone" parent="Waepon_slots" instance=ExtResource("6_qhjyw")]
+[node name="DropZone" parent="Waepon_slots" instance=ExtResource("6_apo16")]
 position = Vector2(408, 528)
 
-[node name="DropZone2" parent="Waepon_slots" instance=ExtResource("6_qhjyw")]
+[node name="DropZone2" parent="Waepon_slots" instance=ExtResource("6_apo16")]
 position = Vector2(408, 287)
 
-[node name="DropZone3" parent="Waepon_slots" instance=ExtResource("6_qhjyw")]
+[node name="DropZone3" parent="Waepon_slots" instance=ExtResource("6_apo16")]
 position = Vector2(744, 528)
 
-[node name="DropZone4" parent="Waepon_slots" instance=ExtResource("6_qhjyw")]
+[node name="DropZone4" parent="Waepon_slots" instance=ExtResource("6_apo16")]
 position = Vector2(744, 287)
 
 [node name="weapons" type="Node" parent="."]
 
-[node name="Revolver1" parent="weapons" instance=ExtResource("7_htcps")]
+[node name="Revolver1" parent="weapons" instance=ExtResource("7_cnoxj")]
 position = Vector2(122, 50)
 
-[node name="Revolver2" parent="weapons" instance=ExtResource("7_htcps")]
+[node name="Revolver2" parent="weapons" instance=ExtResource("7_cnoxj")]
 position = Vector2(270, 55)
 
-[node name="Revolver3" parent="weapons" instance=ExtResource("7_htcps")]
+[node name="Revolver3" parent="weapons" instance=ExtResource("7_cnoxj")]
 position = Vector2(421, 51)
 
-[node name="Revolver4" parent="weapons" instance=ExtResource("7_htcps")]
+[node name="Revolver4" parent="weapons" instance=ExtResource("7_cnoxj")]
 position = Vector2(569, 56)
 
-[node name="Target" parent="." instance=ExtResource("8_qmtj5")]
-position = Vector2(1080, 528)
+[node name="Target" parent="." instance=ExtResource("8_7d64g")]
+position = Vector2(978, 200)
 
-[node name="ShootButton" parent="." instance=ExtResource("9_gbk0s")]
+[node name="ShootButton" parent="." instance=ExtResource("9_wfujx")]
 position = Vector2(64, 583)
 
-[node name="Bullet" parent="." instance=ExtResource("10_tkli8")]
+[node name="Bullet" parent="." instance=ExtResource("10_bbgin")]
 position = Vector2(88, 519)
 
-[node name="Player" parent="." instance=ExtResource("11_36y3b")]
+[node name="Player" parent="." instance=ExtResource("11_evwll")]
 position = Vector2(75, 528)
 
-[node name="NextLevelButton" parent="." instance=ExtResource("12_r0j10")]
+[node name="NextLevelButton" parent="." instance=ExtResource("12_swaa4")]
 offset_left = 26.0
 offset_top = 605.0
 offset_right = 111.0

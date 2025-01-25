@@ -1,7 +1,5 @@
 extends Button
 
-@onready var level: Node2D = $"."
-
 
 func _on_pressed() -> void:
-	print(level.name)
+	get_tree().change_scene_to_file("res://Scenes/Level_" + str(get_tree().current_scene.name.to_int() + 1)  + ".tscn")
