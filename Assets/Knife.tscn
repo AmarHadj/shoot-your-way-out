@@ -1,17 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://cglgw3xivu2t4"]
+[gd_scene load_steps=7 format=3 uid="uid://drruxylt3ith"]
 
-[ext_resource type="Texture2D" uid="uid://bfrd487usat6v" path="res://Art/revolver.png" id="1_1di6j"]
-[ext_resource type="Script" path="res://scripts/weapon.gd" id="1_ftlq0"]
+[ext_resource type="Script" path="res://scripts/weapon.gd" id="1_oj7o1"]
+[ext_resource type="Texture2D" uid="uid://cds8wrrpf4kqt" path="res://Art/knife.png" id="2_xylg2"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cyaik"]
-atlas = ExtResource("1_1di6j")
+[sub_resource type="AtlasTexture" id="AtlasTexture_b55ui"]
+atlas = ExtResource("2_xylg2")
 region = Rect2(0, 0, 144, 144)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_u2s54"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cyaik")
+"texture": SubResource("AtlasTexture_b55ui")
 }],
 "loop": true,
 "name": &"default",
@@ -19,25 +19,29 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cy3iy"]
-radius = 12.0
+radius = 13.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m8n7j"]
 radius = 9.87935
 
-[node name="Revolver" type="Node2D" groups=["Weapons"]]
+[node name="knife" type="Node2D" groups=["Weapons"]]
 position = Vector2(2, 1)
-script = ExtResource("1_ftlq0")
+script = ExtResource("1_oj7o1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_u2s54")
 
-[node name="shoot_area" type="Area2D" parent="AnimatedSprite2D"]
+[node name="cut_area" type="Area2D" parent="AnimatedSprite2D"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/shoot_area"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/cut_area"]
+position = Vector2(-2, 0)
 shape = SubResource("CircleShape2D_cy3iy")
 
-[node name="barrel" type="Marker2D" parent="AnimatedSprite2D/shoot_area"]
-position = Vector2(11, -13)
+[node name="up" type="Marker2D" parent="AnimatedSprite2D/cut_area"]
+position = Vector2(0, -30)
+
+[node name="down" type="Marker2D" parent="AnimatedSprite2D/cut_area"]
+position = Vector2(0, 30)
 
 [node name="picked_area" type="Area2D" parent="AnimatedSprite2D"]
 

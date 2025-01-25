@@ -1,7 +1,6 @@
 [gd_scene load_steps=18 format=4 uid="uid://nw2kowxiwgld"]
 
 [ext_resource type="Texture2D" uid="uid://brgeoroctr46p" path="res://Art/Background.png" id="1_d18rm"]
-[ext_resource type="Script" path="res://scripts/Level.gd" id="1_jcdyn"]
 [ext_resource type="Texture2D" uid="uid://chluqvc5li0tq" path="res://Art/weapon slot.png" id="2_da4e5"]
 [ext_resource type="Texture2D" uid="uid://cnt4pn5ns42x6" path="res://Art/wall.png" id="3_vtatv"]
 [ext_resource type="Texture2D" uid="uid://bl7n425q3f6g1" path="res://Art/ground.png" id="4_of8fy"]
@@ -13,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bfhffvsj8cssc" path="res://Assets/Bullet.tscn" id="10_tkli8"]
 [ext_resource type="PackedScene" uid="uid://c8jxhu18nruo2" path="res://Assets/Player.tscn" id="11_36y3b"]
 [ext_resource type="PackedScene" uid="uid://lf6m3xu2ssyb" path="res://Assets/Next_level_button.tscn" id="12_r0j10"]
+[ext_resource type="PackedScene" uid="uid://drruxylt3ith" path="res://Assets/Knife.tscn" id="14_a4dq1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s0qen"]
 texture = ExtResource("2_da4e5")
@@ -42,7 +42,6 @@ sources/1 = SubResource("TileSetAtlasSource_w8fui")
 sources/2 = SubResource("TileSetAtlasSource_onfcm")
 
 [node name="level_1" type="Node2D"]
-script = ExtResource("1_jcdyn")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(576, 324)
@@ -50,6 +49,7 @@ texture = ExtResource("1_d18rm")
 
 [node name="Walls" type="TileMapLayer" parent="."]
 position = Vector2(528, 360)
+tile_map_data = PackedByteArray("AAD0/wUAAQAAAAAAAAANAAYAAQAAAAAAAAAMAAYAAQAAAAAAAAALAAYAAQAAAAAAAAAKAAYAAQAAAAAAAAAJAAYAAQAAAAAAAAAIAAYAAQAAAAAAAAAHAAYAAQAAAAAAAAAGAAYAAQAAAAAAAAAFAAYAAQAAAAAAAAAEAAYAAQAAAAAAAAADAAYAAQAAAAAAAAACAAYAAQAAAAAAAAABAAYAAQAAAAAAAAAAAAYAAQAAAAAAAAD//wYAAQAAAAAAAAD+/wYAAQAAAAAAAAD9/wYAAQAAAAAAAAD8/wYAAQAAAAAAAAD7/wYAAQAAAAAAAAD6/wYAAQAAAAAAAAD5/wYAAQAAAAAAAAD4/wYAAQAAAAAAAAD3/wYAAQAAAAAAAAD2/wYAAQAAAAAAAAD1/wYAAQAAAAAAAAD0/wYAAQAAAAAAAAANAAUAAQAAAAAAAAANAAQAAQAAAAAAAAANAAMAAQAAAAAAAAANAAIAAQAAAAAAAAANAAEAAQAAAAAAAAANAAAAAQAAAAAAAAANAP//AQAAAAAAAAANAP7/AQAAAAAAAAANAP3/AQAAAAAAAAANAPz/AQAAAAAAAAANAPv/AQAAAAAAAAANAPr/AQAAAAAAAAANAPn/AQAAAAAAAAD0//n/AQAAAAAAAAD0//z/AQAAAAAAAAD0//v/AQAAAAAAAAD0//r/AQAAAAAAAAD1//n/AQAAAAAAAAD2//n/AQAAAAAAAAD3//n/AQAAAAAAAAD4//n/AQAAAAAAAAD5//n/AQAAAAAAAAD6//n/AQAAAAAAAAD7//n/AQAAAAAAAAD8//n/AQAAAAAAAAD9//n/AQAAAAAAAAD+//n/AQAAAAAAAAD///n/AQAAAAAAAAAAAPn/AQAAAAAAAAABAPn/AQAAAAAAAAACAPn/AQAAAAAAAAADAPn/AQAAAAAAAAAEAPn/AQAAAAAAAAAFAPn/AQAAAAAAAAAGAPn/AQAAAAAAAAAHAPn/AQAAAAAAAAAIAPn/AQAAAAAAAAAJAPn/AQAAAAAAAAAKAPn/AQAAAAAAAAALAPn/AQAAAAAAAAAMAPn/AQAAAAAAAAD0/wQAAQAAAAAAAAD0/wMAAQAAAAAAAAD0/wIAAQAAAAAAAAD0/wEAAQAAAAAAAAD0/wAAAQAAAAAAAAD0////AQAAAAAAAAD0//7/AQAAAAAAAAD0//3/AQAAAAAAAAA=")
 tile_set = SubResource("TileSet_11qq3")
 
 [node name="ground" type="TileMapLayer" parent="."]
@@ -92,6 +92,9 @@ position = Vector2(421, 51)
 [node name="Revolver4" parent="weapons" instance=ExtResource("7_htcps")]
 position = Vector2(569, 56)
 
+[node name="knife" parent="weapons" instance=ExtResource("14_a4dq1")]
+position = Vector2(717, 52)
+
 [node name="Target" parent="." instance=ExtResource("8_qmtj5")]
 position = Vector2(1080, 528)
 
@@ -109,3 +112,5 @@ offset_left = 26.0
 offset_top = 605.0
 offset_right = 111.0
 offset_bottom = 636.0
+
+[node name="background" type="Node" parent="."]

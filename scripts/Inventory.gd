@@ -3,7 +3,7 @@ extends Control
 var revolvers = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Observer._ready()
+	Observer.set_slots()
 	revolvers = get_tree().get_nodes_in_group("Weapons")
 
 	for i in range(revolvers.size()) :

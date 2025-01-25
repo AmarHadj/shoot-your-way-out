@@ -7,6 +7,7 @@ const SPEED = 300.0 # set to 2000.0 for the final result
 var x_movment = SPEED
 var y_movment = 0
 var spawn_point
+var second_bullet
 
 func _ready():
 	spawn_point = global_position
@@ -18,14 +19,17 @@ func _physics_process(delta):
 		move_and_slide()
 		
 		if lose_ray_cast.is_colliding():
-			Observer.shootingPhase = false
-			global_position = spawn_point
-			x_movment = SPEED
-			y_movment = 0
-			self.set_rotation_degrees(0)
+			get_tree().change_scene_to_file("res://Scenes/Level_" + str(get_tree().current_scene.name.to_int()) + ".tscn")
+			Observer.setPhaseToShoot()
+
+			#Observer.shootingPhase = false
+			#global_position = spawn_point
+			#x_movment = SPEED
+			#y_movment = 0
+			#self.set_rotation_degrees(0)
 
 func _on_area_2d_area_entered(area: Area2D):
-	if area.name == "shoot_area" :
+	if area.name == "shoot_area" and !area.get_parent().get_parent().get_used():
 		# sets the position of the bullet on the gun barrel
 		for child in area.get_children():
 			if child.name == "barrel":
@@ -45,11 +49,16 @@ func _on_area_2d_area_entered(area: Area2D):
 			
 		if gun_rotation == 270 :
 			set_movment(0, -SPEED)
-	
+		area.get_parent().get_parent().set_used_true()
 	
 	if area.name == "win" :
 		pass
-		
+	
+	if area.name == "cut_area" :
+		area.get_parent().get_parent().cut_bullet()
+
+
+				
 func set_movment(x,y):
 	y_movment = y
 	x_movment = x

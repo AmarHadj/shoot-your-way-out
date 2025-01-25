@@ -1,10 +1,13 @@
 extends Node2D
+@onready var weapon_type: Node2D = $"."
 
-const min_dist = 50 # the minimum distance for a gun to be at a weapon slot to get attached at it
-var new_position = -1 #represent the position on the weapon slots array where the gun will be placed
+const min_dist = 50 # the minimum distance for a weapon to be at a weapon slot to get attached at it
+var new_position = -1 #represent the position on the weapon slots array where the weapon will be placed
 var selected = false
-var inventory_slot # the inventory slot that the gun will have
+var inventory_slot # the inventory slot that the weapon will have
 var is_placed
+var used = false
+
 
 var rotation_angle = 90
 var rotation_applied = 0
@@ -22,6 +25,7 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int):
 		
 func _physics_process(delta):
 	if !Observer.shootingPhase:
+		used = false
 		if selected:
 			global_position=lerp(global_position, get_global_mouse_position(), 25*delta)
 			is_placed = false		
@@ -43,8 +47,8 @@ func _input(event):
 		if event.button_index == MOUSE_BUTTON_LEFT and not event.pressed:
 			selected = false
 			
-# this function will compare the global position of the gun with the global position of the weapon
-# slot and decide if the difference is close enough to attach the gun to the weapon slot
+# this function will compare the global position of the weapon with the global position of the weapon
+# slot and decide if the difference is close enough to attach the weapon to the weapon slot
 func place_gun():
 	for i in range(Observer.weapon_slots.size()):
 		if abs(global_position.x - Observer.weapon_slots[i].global_position.x) < min_dist and abs(global_position.y - Observer.weapon_slots[i].global_position.y) < min_dist and !Observer.weapon_slots[i].get_has_weapon():
@@ -59,4 +63,28 @@ func get_rotation_applied():
 func set_rest_point(inventory_slot_choosed : Marker2D):
 	inventory_slot = inventory_slot_choosed
 		
+func set_used_true():
+	used = true
 	
+func get_used():
+	return used
+
+func cut_bullet():
+	
+		if rotation_applied == 0 :
+			Observer.create_bullet(global_position.x,global_position.y -30, 270, 0, -300)
+			Observer.create_bullet(global_position.x,global_position.y +30, 90, 0, 300)
+			
+		if rotation_applied == 90 :
+			Observer.create_bullet(global_position.x,global_position.y -30, 270, 0, 300)
+			Observer.create_bullet(global_position.x,global_position.y +30, 90, 0, -300)
+			
+		if rotation_applied == 180 :
+			Observer.create_bullet(global_position.x,global_position.y -30, 270, 0, 300)
+			Observer.create_bullet(global_position.x,global_position.y +30, 90, 0, -300)
+			
+		if rotation_applied == 270 :
+			Observer.create_bullet(global_position.x,global_position.y -30, 270, 0, 300)
+			Observer.create_bullet(global_position.x,global_position.y +30, 90, 0, -300)
+
+		set_used_true()
