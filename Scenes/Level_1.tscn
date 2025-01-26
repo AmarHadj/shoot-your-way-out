@@ -1,5 +1,6 @@
-[gd_scene load_steps=18 format=4 uid="uid://nw2kowxiwgld"]
+[gd_scene load_steps=19 format=4 uid="uid://nw2kowxiwgld"]
 
+[ext_resource type="Script" path="res://scripts/Level.gd" id="1_65iw5"]
 [ext_resource type="Texture2D" uid="uid://brgeoroctr46p" path="res://Art/Background.png" id="1_d18rm"]
 [ext_resource type="Texture2D" uid="uid://chluqvc5li0tq" path="res://Art/weapon slot.png" id="2_da4e5"]
 [ext_resource type="Texture2D" uid="uid://cnt4pn5ns42x6" path="res://Art/wall.png" id="3_vtatv"]
@@ -42,6 +43,7 @@ sources/1 = SubResource("TileSetAtlasSource_w8fui")
 sources/2 = SubResource("TileSetAtlasSource_onfcm")
 
 [node name="level_1" type="Node2D"]
+script = ExtResource("1_65iw5")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(576, 324)
@@ -102,12 +104,14 @@ position = Vector2(1080, 528)
 position = Vector2(64, 583)
 
 [node name="Bullet" parent="." instance=ExtResource("10_tkli8")]
-position = Vector2(88, 519)
+position = Vector2(101, 519)
 
 [node name="Player" parent="." instance=ExtResource("11_36y3b")]
-position = Vector2(75, 528)
+top_level = true
+position = Vector2(101, 519)
 
 [node name="NextLevelButton" parent="." instance=ExtResource("12_r0j10")]
+visible = false
 offset_left = 26.0
 offset_top = 605.0
 offset_right = 111.0

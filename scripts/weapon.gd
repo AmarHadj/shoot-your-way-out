@@ -75,16 +75,16 @@ func cut_bullet():
 			Observer.create_bullet(global_position.x,global_position.y -30, 270, 0, -300)
 			Observer.create_bullet(global_position.x,global_position.y +30, 90, 0, 300)
 			
-		if rotation_applied == 90 :
-			Observer.create_bullet(global_position.x,global_position.y -30, 270, 0, 300)
-			Observer.create_bullet(global_position.x,global_position.y +30, 90, 0, -300)
-			
-		if rotation_applied == 180 :
-			Observer.create_bullet(global_position.x,global_position.y -30, 270, 0, 300)
-			Observer.create_bullet(global_position.x,global_position.y +30, 90, 0, -300)
-			
-		if rotation_applied == 270 :
-			Observer.create_bullet(global_position.x,global_position.y -30, 270, 0, 300)
-			Observer.create_bullet(global_position.x,global_position.y +30, 90, 0, -300)
+		#if rotation_applied == 90 :
+			#Observer.create_bullet(global_position.x,global_position.y -30, 270, 0, 300)
+			#Observer.create_bullet(global_position.x,global_position.y +30, 90, 0, -300)
+			#
+		#if rotation_applied == 180 :
+			#Observer.create_bullet(global_position.x,global_position.y -30, 270, 0, 300)
+			#Observer.create_bullet(global_position.x,global_position.y +30, 90, 0, -300)
+			#
+		#if rotation_applied == 270 :
+			#Observer.create_bullet(global_position.x,global_position.y -30, 270, 0, 300)
+			#Observer.create_bullet(global_position.x,global_position.y +30, 90, 0, -300)
 
 		set_used_true()

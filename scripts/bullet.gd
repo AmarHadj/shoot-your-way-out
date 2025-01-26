@@ -14,15 +14,17 @@ func _ready():
 
 func _physics_process(delta):
 	if Observer.shootingPhase:
-		velocity.x = x_movment
-		velocity.y = y_movment
+		if(x_movment == 0 and y_movment == 0):
+			velocity.x = SPEED
+		else :
+			velocity.x = x_movment
+			velocity.y = y_movment
 		move_and_slide()
 		
 		if lose_ray_cast.is_colliding():
-			get_tree().change_scene_to_file("res://Scenes/Level_" + str(get_tree().current_scene.name.to_int()) + ".tscn")
-			Observer.setPhaseToShoot()
-
-			#Observer.shootingPhase = false
+			Observer.bullets.erase(self)
+			Observer.verify_win()
+			queue_free()
 			#global_position = spawn_point
 			#x_movment = SPEED
 			#y_movment = 0
@@ -56,6 +58,8 @@ func _on_area_2d_area_entered(area: Area2D):
 	
 	if area.name == "cut_area" :
 		area.get_parent().get_parent().cut_bullet()
+		Observer.bullets.erase(self)
+		queue_free()
 
 
 				
