@@ -7,7 +7,7 @@ var selected = false
 var inventory_slot # the inventory slot that the weapon will have
 var is_placed
 var used = false
-var bullet_speed = 2000
+var bullet_speed = 800
 
 
 var rotation_angle = 90

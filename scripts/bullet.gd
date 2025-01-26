@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 
 
-const SPEED = 2000.0 # set to 2000.0 for the final result
+const SPEED = 800 # set to 800 for the final result
 var x_movment = SPEED
 var y_movment = 0
 var spawn_point
