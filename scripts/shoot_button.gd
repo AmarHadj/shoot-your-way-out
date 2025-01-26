@@ -9,9 +9,10 @@ func _process(delta):
 		
 # This code will switch into shoot mode and the player will see the results of his guns placement
 func _on_button_pressed() -> void:
-	Observer.setPhaseToShoot()
-	if Observer.shootingPhase:
-		self.get_child(0).set_text("stop")
-		need_changed_text = true
-	if !Observer.shootingPhase:
-		self.get_child(0).set_text("shoot")
+	if !Observer.win:
+		Observer.setPhaseToShoot()
+		if Observer.shootingPhase:
+			self.get_child(0).set_text("stop")
+			need_changed_text = true
+		if !Observer.shootingPhase:
+			self.get_child(0).set_text("shoot")
