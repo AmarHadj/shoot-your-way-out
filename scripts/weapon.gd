@@ -7,6 +7,7 @@ var selected = false
 var inventory_slot # the inventory slot that the weapon will have
 var is_placed
 var used = false
+var bullet_speed = 2000
 
 
 var rotation_angle = 90
@@ -70,21 +71,20 @@ func get_used():
 	return used
 
 func cut_bullet():
-	
 		if rotation_applied == 0 :
-			Observer.create_bullet(global_position.x,global_position.y -30, 270, 0, -300)
-			Observer.create_bullet(global_position.x,global_position.y +30, 90, 0, 300)
+			Observer.create_bullet(global_position.x,global_position.y -30, 270, 0, -bullet_speed)
+			Observer.create_bullet(global_position.x,global_position.y +30, 90, 0, bullet_speed)
 			
-		#if rotation_applied == 90 :
-			#Observer.create_bullet(global_position.x,global_position.y -30, 270, 0, 300)
-			#Observer.create_bullet(global_position.x,global_position.y +30, 90, 0, -300)
-			#
-		#if rotation_applied == 180 :
-			#Observer.create_bullet(global_position.x,global_position.y -30, 270, 0, 300)
-			#Observer.create_bullet(global_position.x,global_position.y +30, 90, 0, -300)
-			#
-		#if rotation_applied == 270 :
-			#Observer.create_bullet(global_position.x,global_position.y -30, 270, 0, 300)
-			#Observer.create_bullet(global_position.x,global_position.y +30, 90, 0, -300)
+		if rotation_applied == 90 :
+			Observer.create_bullet(global_position.x -30,global_position.y, 180, -bullet_speed, 0)
+			Observer.create_bullet(global_position.x +30,global_position.y , 0, bullet_speed, 0)
+			
+		if rotation_applied == 180 :
+			Observer.create_bullet(global_position.x,global_position.y -30, 270, 0, -bullet_speed)
+			Observer.create_bullet(global_position.x,global_position.y +30, 90, 0, bullet_speed)
+			
+		if rotation_applied == 270 :
+			Observer.create_bullet(global_position.x -30,global_position.y, 180, -bullet_speed, 0)
+			Observer.create_bullet(global_position.x +30,global_position.y , 0, bullet_speed, 0)
 
 		set_used_true()

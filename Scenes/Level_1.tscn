@@ -82,6 +82,9 @@ position = Vector2(744, 287)
 
 [node name="weapons" type="Node" parent="."]
 
+[node name="knife2" parent="weapons" instance=ExtResource("14_a4dq1")]
+position = Vector2(163, 286)
+
 [node name="Revolver1" parent="weapons" instance=ExtResource("7_htcps")]
 position = Vector2(122, 50)
 
@@ -90,9 +93,6 @@ position = Vector2(270, 55)
 
 [node name="Revolver3" parent="weapons" instance=ExtResource("7_htcps")]
 position = Vector2(421, 51)
-
-[node name="Revolver4" parent="weapons" instance=ExtResource("7_htcps")]
-position = Vector2(569, 56)
 
 [node name="knife" parent="weapons" instance=ExtResource("14_a4dq1")]
 position = Vector2(717, 52)

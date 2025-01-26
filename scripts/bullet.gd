@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 
 
-const SPEED = 300.0 # set to 2000.0 for the final result
+const SPEED = 2000.0 # set to 2000.0 for the final result
 var x_movment = SPEED
 var y_movment = 0
 var spawn_point
@@ -25,10 +25,6 @@ func _physics_process(delta):
 			Observer.bullets.erase(self)
 			Observer.verify_win()
 			queue_free()
-			#global_position = spawn_point
-			#x_movment = SPEED
-			#y_movment = 0
-			#self.set_rotation_degrees(0)
 
 func _on_area_2d_area_entered(area: Area2D):
 	if area.name == "shoot_area" and !area.get_parent().get_parent().get_used():
@@ -54,15 +50,16 @@ func _on_area_2d_area_entered(area: Area2D):
 		area.get_parent().get_parent().set_used_true()
 	
 	if area.name == "win" :
-		pass
+		area.get_parent().set_is_touched()
+		Observer.bullets.erase(self)
+		Observer.verify_win()
+		queue_free()
 	
-	if area.name == "cut_area" :
+	if area.name == "cut_area" and !area.get_parent().get_parent().get_used():
 		area.get_parent().get_parent().cut_bullet()
 		Observer.bullets.erase(self)
 		queue_free()
 
-
-				
 func set_movment(x,y):
 	y_movment = y
 	x_movment = x
