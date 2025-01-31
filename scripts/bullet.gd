@@ -14,8 +14,12 @@ func _ready():
 
 func _physics_process(delta):
 	if Observer.shootingPhase:
-		if(x_movment == 0 and y_movment == 0):
+		if x_movment == 0 and y_movment == 0 and self.get_rotation_degrees() == 0:
 			velocity.x = SPEED
+		elif x_movment == 0 and y_movment == 0 and self.get_rotation_degrees() < 0:
+			velocity.y = -SPEED
+		elif self.get_rotation_degrees() < 0 and  self.get_rotation_degrees() > -91:
+			velocity.y = -SPEED		
 		else :
 			velocity.x = x_movment
 			velocity.y = y_movment

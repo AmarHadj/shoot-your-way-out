@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b0scdla5fej5g"]
+[gd_scene load_steps=5 format=3 uid="uid://b0scdla5fej5g"]
 
 [ext_resource type="Script" path="res://scripts/Inventory.gd" id="1_i6ug5"]
 [ext_resource type="Texture2D" uid="uid://bwiaghq4ip2e8" path="res://Art/Inventory.png" id="1_smbuq"]
 [ext_resource type="PackedScene" uid="uid://tal68jtsg3wr" path="res://Assets/Inventory_slot.tscn" id="2_pfhes"]
+[ext_resource type="PackedScene" uid="uid://bc71h1ssm1wt" path="res://Assets/Menu_button.tscn" id="4_56oa0"]
 
 [node name="Inventory" type="Control"]
 layout_mode = 3
@@ -14,7 +15,8 @@ grow_vertical = 2
 script = ExtResource("1_i6ug5")
 
 [node name="Inventory" type="Sprite2D" parent="."]
-position = Vector2(576, 51)
+position = Vector2(640, 51)
+scale = Vector2(1.11111, 1)
 texture = ExtResource("1_smbuq")
 
 [node name="DropZone1" parent="." instance=ExtResource("2_pfhes")]
@@ -31,3 +33,10 @@ position = Vector2(572, 51)
 
 [node name="DropZone6" parent="." instance=ExtResource("2_pfhes")]
 position = Vector2(722, 51)
+
+[node name="MenuButton" parent="." instance=ExtResource("4_56oa0")]
+layout_mode = 0
+offset_left = 1155.0
+offset_top = 29.0
+offset_right = 1263.0
+offset_bottom = 69.0

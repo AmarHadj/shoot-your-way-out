@@ -1,0 +1,130 @@
+[gd_scene load_steps=19 format=4 uid="uid://c6ywqknfj821p"]
+
+[ext_resource type="Script" path="res://scripts/Level.gd" id="1_823yq"]
+[ext_resource type="Texture2D" uid="uid://brgeoroctr46p" path="res://Art/Background.png" id="2_p1jgn"]
+[ext_resource type="Texture2D" uid="uid://chluqvc5li0tq" path="res://Art/weapon slot.png" id="3_evrlc"]
+[ext_resource type="Texture2D" uid="uid://cnt4pn5ns42x6" path="res://Art/wall.png" id="4_40270"]
+[ext_resource type="Texture2D" uid="uid://bl7n425q3f6g1" path="res://Art/ground.png" id="5_ayl4t"]
+[ext_resource type="PackedScene" uid="uid://b0scdla5fej5g" path="res://Assets/Inventory.tscn" id="6_hj0sa"]
+[ext_resource type="PackedScene" uid="uid://4sfog0m880yt" path="res://Assets/weapon_slot.tscn" id="7_8gyiu"]
+[ext_resource type="PackedScene" uid="uid://cglgw3xivu2t4" path="res://Assets/Revolver.tscn" id="8_2qwm7"]
+[ext_resource type="PackedScene" uid="uid://drruxylt3ith" path="res://Assets/Knife.tscn" id="9_nwhmc"]
+[ext_resource type="PackedScene" uid="uid://clqxixgo3f2rn" path="res://Assets/Target.tscn" id="10_s4joh"]
+[ext_resource type="PackedScene" uid="uid://hrs2xolqc8q7" path="res://Assets/Shoot button.tscn" id="11_v5bso"]
+[ext_resource type="PackedScene" uid="uid://bfhffvsj8cssc" path="res://Assets/Bullet.tscn" id="12_kpenq"]
+[ext_resource type="PackedScene" uid="uid://c8jxhu18nruo2" path="res://Assets/Player.tscn" id="13_dvfdm"]
+[ext_resource type="PackedScene" uid="uid://lf6m3xu2ssyb" path="res://Assets/Next_level_button.tscn" id="14_mkxqe"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s0qen"]
+texture = ExtResource("3_evrlc")
+texture_region_size = Vector2i(48, 48)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w8fui"]
+texture = ExtResource("4_40270")
+texture_region_size = Vector2i(48, 48)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -24, 24, -24, 24, 24, -24, 24)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_onfcm"]
+texture = ExtResource("5_ayl4t")
+texture_region_size = Vector2i(48, 48)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -24, 24, -24, 24, 24, -24, 24)
+
+[sub_resource type="TileSet" id="TileSet_11qq3"]
+physics_layer_0/collision_layer = 1
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Terrain 0"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+sources/0 = SubResource("TileSetAtlasSource_s0qen")
+sources/1 = SubResource("TileSetAtlasSource_w8fui")
+sources/2 = SubResource("TileSetAtlasSource_onfcm")
+
+[node name="level_3" type="Node2D"]
+script = ExtResource("1_823yq")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Background" type="Sprite2D" parent="."]
+scale = Vector2(1.11111, 1.11111)
+texture = ExtResource("2_p1jgn")
+
+[node name="Walls" type="TileMapLayer" parent="."]
+position = Vector2(-64, 24)
+tile_map_data = PackedByteArray("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")
+tile_set = SubResource("TileSet_11qq3")
+
+[node name="ground" type="TileMapLayer" parent="."]
+position = Vector2(-576, 296)
+tile_set = SubResource("TileSet_11qq3")
+
+[node name="weapon slot" type="TileMapLayer" parent="."]
+position = Vector2(-48, 40)
+tile_map_data = PackedByteArray("AADc/w8AAgAAAAAAAADd/w8AAgAAAAAAAADe/w8AAgAAAAAAAADf/w8AAgAAAAAAAADg/w8AAgAAAAAAAADo/w8AAgAAAAAAAADn/w8AAgAAAAAAAADm/w8AAgAAAAAAAADl/w8AAgAAAAAAAADk/w8AAgAAAAAAAADj/w8AAgAAAAAAAADi/w8AAgAAAAAAAADh/w8AAgAAAAAAAADf/xAAAgAAAAAAAADg/xAAAgAAAAAAAADh/xAAAgAAAAAAAADi/xAAAgAAAAAAAADj/xAAAgAAAAAAAADk/xAAAgAAAAAAAADl/xAAAgAAAAAAAADm/xAAAgAAAAAAAADe/xAAAgAAAAAAAADd/xAAAgAAAAAAAADc/xAAAgAAAAAAAADf/xEAAgAAAAAAAADe/xEAAgAAAAAAAADd/xEAAgAAAAAAAADc/xEAAgAAAAAAAADe/xIAAgAAAAAAAADd/xIAAgAAAAAAAADc/xIAAgAAAAAAAADf/xIAAgAAAAAAAADg/xIAAgAAAAAAAADh/xIAAgAAAAAAAADi/xIAAgAAAAAAAADj/xIAAgAAAAAAAADk/xIAAgAAAAAAAADl/xIAAgAAAAAAAADm/xIAAgAAAAAAAADn/xIAAgAAAAAAAADo/xIAAgAAAAAAAADg/xEAAgAAAAAAAADh/xEAAgAAAAAAAADi/xEAAgAAAAAAAADj/xEAAgAAAAAAAADk/xEAAgAAAAAAAADl/xEAAgAAAAAAAADm/xEAAgAAAAAAAADn/xAAAgAAAAAAAADn/xEAAgAAAAAAAADo/xAAAgAAAAAAAADo/xEAAgAAAAAAAAA=")
+tile_set = SubResource("TileSet_11qq3")
+
+[node name="Inventory" parent="." instance=ExtResource("6_hj0sa")]
+offset_left = -640.0
+offset_top = -360.0
+offset_right = -640.0
+offset_bottom = -360.0
+
+[node name="Waepon_slots" type="Node" parent="."]
+
+[node name="DropZone" parent="Waepon_slots" instance=ExtResource("7_8gyiu")]
+
+[node name="DropZone2" parent="Waepon_slots" instance=ExtResource("7_8gyiu")]
+position = Vector2(-280, 0)
+
+[node name="DropZone3" parent="Waepon_slots" instance=ExtResource("7_8gyiu")]
+position = Vector2(-280, 303)
+
+[node name="DropZone4" parent="Waepon_slots" instance=ExtResource("7_8gyiu")]
+position = Vector2(280, 0)
+
+[node name="DropZone5" parent="Waepon_slots" instance=ExtResource("7_8gyiu")]
+position = Vector2(280, 303)
+
+[node name="weapons" type="Node" parent="."]
+
+[node name="Revolver1" parent="weapons" instance=ExtResource("8_2qwm7")]
+position = Vector2(-518, -309)
+
+[node name="Revolver2" parent="weapons" instance=ExtResource("8_2qwm7")]
+position = Vector2(-370, -304)
+
+[node name="Revolver" parent="weapons" instance=ExtResource("8_2qwm7")]
+position = Vector2(-218, -309)
+
+[node name="knife" parent="weapons" instance=ExtResource("9_nwhmc")]
+position = Vector2(-69, -309)
+
+[node name="knife2" parent="weapons" instance=ExtResource("9_nwhmc")]
+position = Vector2(82, -309)
+
+[node name="ShootButton" parent="." instance=ExtResource("11_v5bso")]
+position = Vector2(-512, 297)
+
+[node name="Bullet" parent="." instance=ExtResource("12_kpenq")]
+position = Vector2(-474, 0)
+
+[node name="Player" parent="." instance=ExtResource("13_dvfdm")]
+position = Vector2(-474, 0)
+
+[node name="NextLevelButton" parent="." instance=ExtResource("14_mkxqe")]
+visible = false
+offset_left = -553.0
+offset_top = 321.0
+offset_right = -468.0
+offset_bottom = 352.0
+
+[node name="Target" parent="." instance=ExtResource("10_s4joh")]
+position = Vector2(565, 16)
+
+[node name="Target2" parent="." instance=ExtResource("10_s4joh")]
+position = Vector2(0, 144)
+
+[node name="Target3" parent="." instance=ExtResource("10_s4joh")]
+position = Vector2(0, -186)
+rotation = 3.14159

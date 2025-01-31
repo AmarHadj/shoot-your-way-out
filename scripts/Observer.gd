@@ -10,7 +10,7 @@ var bullet_packed = load("res://Assets/Bullet.tscn")
 
 
 #set the phase to shooting phase
-func setPhaseToShoot():
+func set_phase_to_shoot():
 	if !shootingPhase :
 		shootingPhase = true
 	elif shootingPhase :
@@ -44,7 +44,10 @@ func verify_win():
 	
 	if bullets.is_empty() and win:
 		get_tree().current_scene.win()
-		setPhaseToShoot()
+		set_phase_to_shoot()
 	elif bullets.is_empty() and !win:
 		get_tree().current_scene.lose()
-		setPhaseToShoot()
+		for target in targets :
+			if target.get_is_touched():
+				target.set_is_touched()
+		set_phase_to_shoot()

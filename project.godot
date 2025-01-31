@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Shoot Your Way Out !"
-run/main_scene="res://Scenes/Level_1.tscn"
+run/main_scene="res://Scenes/Menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -21,6 +21,8 @@ Observer="*res://scripts/Observer.gd"
 
 [display]
 
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/stretch/mode="viewport"
 
 [input]
