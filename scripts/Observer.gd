@@ -9,6 +9,7 @@ var bullets
 var bullet_packed = load("res://Assets/Bullet.tscn")
 
 
+
 #set the phase to shooting phase
 func set_phase_to_shoot():
 	if !shootingPhase :
@@ -30,9 +31,9 @@ func create_bullet(positionx, positiony, rotation, speedx, speedy):
 		bullet.global_position.y = positiony
 		bullet.set_rotation_degrees(rotation)
 		bullet.set_movment(speedx, speedy)
-		bullet.z_index = 1
+		bullet.z_index = 0
 		bullets.append(bullet)
-		add_child(bullet)
+		call_deferred("add_child", bullet)
 
 func verify_win():
 	for target in targets :

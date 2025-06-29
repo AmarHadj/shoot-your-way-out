@@ -9,6 +9,7 @@ size = Vector2(20, 10)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h6ps5"]
 
 [node name="Bullet" type="CharacterBody2D" groups=["Bullets"]]
+z_index = -1
 collision_layer = 2
 script = ExtResource("1_0v6cr")
 
@@ -26,5 +27,11 @@ texture = ExtResource("1_kce5k")
 [node name="Lose_ray_cast" type="RayCast2D" parent="."]
 position = Vector2(0, -4)
 target_position = Vector2(17, 0)
+
+[node name="knife_animation_ray_cast" type="RayCast2D" parent="."]
+rotation = 4.71239
+target_position = Vector2(9.18216e-07, 77)
+collision_mask = 32
+collide_with_areas = true
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

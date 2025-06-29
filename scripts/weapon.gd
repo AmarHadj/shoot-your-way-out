@@ -1,5 +1,8 @@
 extends Node2D
 @onready var weapon_type: Node2D = $"."
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var sfx: AudioStreamPlayer2D = $SFX
+@export var is_revolver = false
 
 const min_dist = 50 # the minimum distance for a weapon to be at a weapon slot to get attached at it
 var new_position = -1 #represent the position on the weapon slots array where the weapon will be placed
@@ -65,6 +68,11 @@ func set_rest_point(inventory_slot_choosed : Marker2D):
 	inventory_slot = inventory_slot_choosed
 		
 func set_used_true():
+	if is_revolver:
+		animated_sprite_2d.play("shoot")
+	else:
+		animated_sprite_2d.play("slash")
+	sfx.play()
 	used = true
 	
 func get_used():
@@ -88,3 +96,4 @@ func cut_bullet():
 			Observer.create_bullet(global_position.x +30,global_position.y , 0, bullet_speed, 0)
 
 		set_used_true()
+		

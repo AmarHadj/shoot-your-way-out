@@ -1,21 +1,69 @@
-[gd_scene load_steps=7 format=3 uid="uid://drruxylt3ith"]
+[gd_scene load_steps=14 format=3 uid="uid://drruxylt3ith"]
 
 [ext_resource type="Script" path="res://scripts/weapon.gd" id="1_oj7o1"]
-[ext_resource type="Texture2D" uid="uid://cds8wrrpf4kqt" path="res://Art/knife.png" id="2_xylg2"]
+[ext_resource type="Texture2D" uid="uid://bigdcs5jfrpv2" path="res://Art/animation-Sheet.png" id="2_ig5cl"]
+[ext_resource type="AudioStream" uid="uid://btvjryqumc64q" path="res://SFX/knife-slice-41231.mp3" id="3_v00ui"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b55ui"]
-atlas = ExtResource("2_xylg2")
-region = Rect2(0, 0, 144, 144)
+[sub_resource type="AtlasTexture" id="AtlasTexture_i1ql0"]
+atlas = ExtResource("2_ig5cl")
+region = Rect2(0, 0, 288, 288)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f4mvx"]
+atlas = ExtResource("2_ig5cl")
+region = Rect2(576, 0, 288, 288)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_votax"]
+atlas = ExtResource("2_ig5cl")
+region = Rect2(864, 0, 288, 288)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42bxj"]
+atlas = ExtResource("2_ig5cl")
+region = Rect2(1152, 0, 288, 288)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t07j7"]
+atlas = ExtResource("2_ig5cl")
+region = Rect2(1440, 0, 288, 288)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mxmev"]
+atlas = ExtResource("2_ig5cl")
+region = Rect2(1728, 0, 288, 288)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fr70c"]
+atlas = ExtResource("2_ig5cl")
+region = Rect2(0, 0, 288, 288)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_u2s54"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_b55ui")
+"texture": SubResource("AtlasTexture_i1ql0")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f4mvx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_votax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42bxj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t07j7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mxmev")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fr70c")
+}],
+"loop": false,
+"name": &"slash",
+"speed": 10.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cy3iy"]
@@ -30,8 +78,11 @@ script = ExtResource("1_oj7o1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_u2s54")
+animation = &"slash"
+autoplay = "default"
 
 [node name="cut_area" type="Area2D" parent="AnimatedSprite2D"]
+collision_layer = 33
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/cut_area"]
 position = Vector2(-2, 0)
@@ -49,5 +100,8 @@ position = Vector2(0, 30)
 position = Vector2(2, -2)
 scale = Vector2(5.925, 5.925)
 shape = SubResource("CircleShape2D_m8n7j")
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_v00ui")
 
 [connection signal="input_event" from="AnimatedSprite2D/picked_area" to="." method="_on_area_2d_input_event"]
