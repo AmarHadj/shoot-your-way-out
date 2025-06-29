@@ -6,8 +6,8 @@ var inventory_space
 var weapon_slots
 var targets
 var bullets
+var music_handler
 var bullet_packed = load("res://Assets/Bullet.tscn")
-
 
 
 #set the phase to shooting phase

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cewcvjmvq56bd"
+path="res://.godot/imported/Musique d'echec.mp3-955ab638f3095f711808010a3299fa13.mp3str"
+
+[deps]
+
+source_file="res://OST/Musique d'echec.mp3"
+dest_files=["res://.godot/imported/Musique d'echec.mp3-955ab638f3095f711808010a3299fa13.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

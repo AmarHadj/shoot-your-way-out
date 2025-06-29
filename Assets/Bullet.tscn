@@ -28,10 +28,4 @@ texture = ExtResource("1_kce5k")
 position = Vector2(0, -4)
 target_position = Vector2(17, 0)
 
-[node name="knife_animation_ray_cast" type="RayCast2D" parent="."]
-rotation = 4.71239
-target_position = Vector2(9.18216e-07, 77)
-collision_mask = 32
-collide_with_areas = true
-
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

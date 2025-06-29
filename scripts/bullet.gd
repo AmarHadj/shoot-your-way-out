@@ -1,6 +1,5 @@
 extends CharacterBody2D
 @onready var lose_ray_cast: RayCast2D = $Lose_ray_cast
-@onready var knife_animation_ray_cast: RayCast2D = $knife_animation_ray_cast
 
 
 const SPEED = 800 # set to 800 for the final result
@@ -30,10 +29,6 @@ func _physics_process(delta):
 			Observer.bullets.erase(self)
 			Observer.verify_win()
 			queue_free()
-		#if knife_animation_ray_cast.is_colliding():
-			#var knife_touched = knife_animation_ray_cast.get_collider().get_parent().get_parent()
-			#knife_touched.slash_animation()
-			#print("test")
 
 func _on_area_2d_area_entered(area: Area2D):
 	if area.name == "shoot_area" and !area.get_parent().get_parent().get_used():

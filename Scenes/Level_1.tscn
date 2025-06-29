@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://nw2kowxiwgld"]
+[gd_scene load_steps=19 format=4 uid="uid://nw2kowxiwgld"]
 
 [ext_resource type="Script" path="res://scripts/Level.gd" id="1_65iw5"]
 [ext_resource type="Texture2D" uid="uid://brgeoroctr46p" path="res://Art/Background.png" id="1_d18rm"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bfhffvsj8cssc" path="res://Assets/Bullet.tscn" id="10_tkli8"]
 [ext_resource type="PackedScene" uid="uid://c8jxhu18nruo2" path="res://Assets/Player.tscn" id="11_36y3b"]
 [ext_resource type="PackedScene" uid="uid://lf6m3xu2ssyb" path="res://Assets/Next_level_button.tscn" id="12_r0j10"]
+[ext_resource type="PackedScene" uid="uid://cql4vr0tfgqcd" path="res://Assets/Music_handler.tscn" id="14_lhvah"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s0qen"]
 texture = ExtResource("2_da4e5")
@@ -103,3 +104,6 @@ offset_left = -553.0
 offset_top = 321.0
 offset_right = -468.0
 offset_bottom = 352.0
+
+[node name="music_handler" parent="." instance=ExtResource("14_lhvah")]
+position = Vector2(-878, 293)

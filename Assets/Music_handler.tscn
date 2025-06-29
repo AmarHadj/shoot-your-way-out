@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://cql4vr0tfgqcd"]
+
+[ext_resource type="Script" path="res://scripts/music_handler.gd" id="1_gg5i2"]
+[ext_resource type="AudioStream" uid="uid://c6q6j8w13hurd" path="res://OST/Musique de réflexion.mp3" id="1_r0kbe"]
+[ext_resource type="AudioStream" uid="uid://br36l4qkqshb" path="res://OST/MUSIQUE 1 au complet.mp3" id="2_dqois"]
+[ext_resource type="AudioStream" uid="uid://cewcvjmvq56bd" path="res://OST/Musique d'echec.mp3" id="3_h0jdo"]
+[ext_resource type="AudioStream" uid="uid://b10mh48vb704l" path="res://OST/Musique de réussite Aigu.mp3" id="4_cyg8r"]
+
+[node name="music_handler" type="Node2D"]
+script = ExtResource("1_gg5i2")
+
+[node name="Ambiance_music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_r0kbe")
+volume_db = 4.0
+attenuation = 0.447627
+
+[node name="Shooting_music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_dqois")
+volume_db = 4.0
+
+[node name="lose_music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_h0jdo")
+volume_db = 10.071
+
+[node name="win_music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_cyg8r")
+volume_db = 11.929
+
+[connection signal="finished" from="lose_music" to="." method="_on_lose_music_finished"]
