@@ -20,7 +20,7 @@ func win():
 	music_handler.stop_shooting_music()
 	music_handler.play_win_music()
 	change_music = true
-	if self.name != "level_10":
+	if self.name != "level_9":
 		next_level_button.visible = true
 	else :
 		thank_you.set_visible(true)

@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 
 const SPEED = 800 # set to 800 for the final result
-var x_movment = SPEED
+var x_movment = 0
 var y_movment = 0
 var spawn_point
 var second_bullet
@@ -16,10 +16,12 @@ func _physics_process(delta):
 		z_index = 1
 		if x_movment == 0 and y_movment == 0 and self.get_rotation_degrees() == 0:
 			velocity.x = SPEED
-		elif x_movment == 0 and y_movment == 0 and self.get_rotation_degrees() < 0:
+		elif x_movment == 0 and y_movment == 0 and self.get_rotation_degrees() == -90:
 			velocity.y = -SPEED
 		elif self.get_rotation_degrees() < 0 and  self.get_rotation_degrees() > -91:
 			velocity.y = -SPEED		
+		elif self.get_rotation_degrees() < -91 and  self.get_rotation_degrees() > -181:
+			velocity.x = -SPEED		
 		else :
 			velocity.x = x_movment
 			velocity.y = y_movment
@@ -59,7 +61,7 @@ func _on_area_2d_area_entered(area: Area2D):
 		Observer.verify_win()
 		queue_free()
 	
-	if area.name == "cut_area" and !area.get_parent().get_parent().get_used():
+	if area.name == "cut_area" and !area.get_parent().get_parent().get_used() and Observer.shootingPhase:
 		area.get_parent().get_parent().cut_bullet()
 		Observer.bullets.erase(self)
 		queue_free()

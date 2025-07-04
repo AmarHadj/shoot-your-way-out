@@ -127,7 +127,7 @@ rotation = -1.5708
 
 [node name="Player" parent="." instance=ExtResource("12_ykrgb")]
 position = Vector2(0, 185)
-rotation = 4.71239
+rotation = -1.5708
 
 [node name="NextLevelButton" parent="." instance=ExtResource("13_ypbo5")]
 visible = false

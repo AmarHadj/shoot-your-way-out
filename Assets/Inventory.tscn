@@ -37,6 +37,9 @@ position = Vector2(722, 51)
 [node name="DropZone8" parent="." instance=ExtResource("2_pfhes")]
 position = Vector2(872, 51)
 
+[node name="DropZone9" parent="." instance=ExtResource("2_pfhes")]
+position = Vector2(1022, 51)
+
 [node name="MenuButton" parent="." instance=ExtResource("4_56oa0")]
 layout_mode = 0
 offset_left = 1155.0
