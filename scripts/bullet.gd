@@ -31,7 +31,7 @@ func _physics_process(delta):
 			queue_free()
 
 func _on_area_2d_area_entered(area: Area2D):
-	if area.name == "shoot_area" and !area.get_parent().get_parent().get_used():
+	if area.name == "shoot_area" and !area.get_parent().get_parent().get_used() and Observer.shootingPhase:
 		# sets the position of the bullet on the gun barrel
 		for child in area.get_children():
 			if child.name == "barrel":
